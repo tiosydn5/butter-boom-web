@@ -1101,6 +1101,40 @@
             </div>
         </section>
 
+        <!-- Section Form Tanya Langsung -->
+<section id="kontak-tanya" style="margin-top: 60px; padding: 60px 16px 40px 16px; background-color: #fffbeb;">
+  <div style="max-width: 480px; margin: 0 auto; background-color: #ffffff; padding: 28px; border-radius: 20px; border: 1px solid #fde68a; box-shadow: 0 4px 12px rgba(0,0,0,0.05); font-family: inherit;">
+    
+    <h3 style="font-weight: 700; font-size: 20px; color: #78350f; text-align: center; margin-bottom: 8px;">
+      Ada Pertanyaan Seputar Butter Boom?
+    </h3>
+    <p style="color: #6b7280; font-size: 13px; text-align: center; margin-bottom: 20px; line-height: 1.4;">
+      Tulis pertanyaan atau pesanan khususmu di bawah, pesan akan langsung terkirim ke WhatsApp kami.
+    </p>
+
+    <div style="display: flex; flex-direction: column; gap: 14px;">
+      <div>
+        <label for="namaPengirim" style="display: block; font-size: 13px; font-weight: 600; color: #374151; margin-bottom: 6px;">
+          Nama Kamu
+        </label>
+        <input type="text" id="namaPengirim" placeholder="Contoh: Budi" style="width: 100%; box-sizing: border-box; padding: 10px 12px; font-size: 14px; border-radius: 10px; border: 1px solid #d1d5db; outline: none;">
+      </div>
+
+      <div>
+        <label for="isiPesan" style="display: block; font-size: 13px; font-weight: 600; color: #374151; margin-bottom: 6px;">
+          Pertanyaan / Pesan
+        </label>
+        <textarea id="isiPesan" rows="3" placeholder="Contoh: Bisa pesan untuk acara catering 50 pcs hari Sabtu?" style="width: 100%; box-sizing: border-box; padding: 10px 12px; font-size: 14px; border-radius: 10px; border: 1px solid #d1d5db; outline: none; resize: vertical;"></textarea>
+      </div>
+
+      <button type="button" onclick="kirimPesanKeWA()" style="width: 100%; background-color: #d97706; color: #ffffff; font-weight: 600; padding: 12px; border-radius: 10px; border: none; font-size: 14px; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 8px; margin-top: 6px; box-shadow: 0 2px 6px rgba(217, 119, 6, 0.3);">
+        <i class="fa-brands fa-whatsapp" style="font-size: 18px;"></i>
+        <span>Kirim Pesan Sekarang</span>
+      </button>
+    </div>
+  </div>
+</section>
+
     </main>
 
 <!-- =========================
@@ -1271,5 +1305,23 @@
             window.open(url, '_blank');
         }
     </script>
+
+    <script>
+function kirimPesanKeWA() {
+  const nama = document.getElementById('namaPengirim').value.trim();
+  const pesan = document.getElementById('isiPesan').value.trim();
+
+  if (!pesan) {
+    alert('Tolong tulis pertanyaan atau pesanmu dulu ya!');
+    return;
+  }
+
+  const teksNama = nama ? `Halo Butter Boom, saya ${nama}.` : 'Halo Butter Boom,';
+  const teksPesanLengkap = `${teksNama}\n\nSaya ingin bertanya:\n"${pesan}"`;
+
+  const urlWA = `https://wa.me/6285123312286?text=${encodeURIComponent(teksPesanLengkap)}`;
+  window.open(urlWA, '_blank');
+}
+</script>
 </body>
 </html>
